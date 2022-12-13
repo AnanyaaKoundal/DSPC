@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        /* background-color: #016064;*/
+        color: white;
+        font-size: 40px;
+    }
+
+    p {
+        text-align: center;
+    }
+</style>
+
+<body onload="load()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <p id='volunteer' class="fs-2 text-light">0</p>
+                <p class="text-light">Volunteering Members</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function animate(first, last, time) {
+        let start = null;
+        let current = Date.now();
+        const step = (current) => {
+            if (!start) {
+                start = current;
+            }
+            const change = Math.min((current - start) / time, 1);
+            num.innerHTML = Math.floor(change * (last - first) + first);
+            if (change < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                window.cancelAnimationFrame(window.requestAnimationFrame(step));
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+    let text1 = document.getElementById('volunteer');
+    const load = () => {
+        animate(text1, 0, 72, 3000);;
+    }
+</script>
+
+</html>
